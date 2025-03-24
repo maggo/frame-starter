@@ -1,4 +1,31 @@
+import { Metadata } from "next";
 import Image from "next/image";
+
+const appUrl = process.env.NEXT_PUBLIC_URL;
+
+const frame = {
+  version: "next",
+  imageUrl: `${appUrl}/frame/frame-image.png`,
+  button: {
+    title: "Launch Frame",
+    action: {
+      type: "launch_frame",
+      name: "Farcaster Frames v2 Demo",
+      url: appUrl,
+      splashImageUrl: `${appUrl}/frame/splash-image.png`,
+      splashBackgroundColor: "#ffffff",
+    },
+  },
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL(appUrl!),
+  title: "Frames v2 Demo",
+  description: "A Next.js application with Frames v2 support",
+  other: {
+    "fc:frame": JSON.stringify(frame),
+  },
+};
 
 export default function Home() {
   return (
